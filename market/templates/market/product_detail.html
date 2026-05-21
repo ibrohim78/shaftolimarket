@@ -1,0 +1,21 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+  <article class="product-detail detail-card">
+    <div class="detail-head">
+      <h2>{{ product.name }}</h2>
+      <span class="badge">Yangi</span>
+    </div>
+    <p class="detail-price">Narxi: $ {{ product.price }}</p>
+    {% if product.image_url %}
+      <img class="detail-image" src="{{ product.image_url }}" alt="{{ product.name }}" />
+    {% endif %}
+    <div class="detail-description">
+      <p>{{ product.description }}</p>
+    </div>
+    <div class="detail-actions">
+      <button class="btn-add-cart" type="button" data-name="{{ product.name }}" data-price="{{ product.price }}">Savatchaga qo‘shish</button>
+    </div>
+    <p><a class="back-link" href="{% url 'market:home' %}">Bosh sahifaga qaytish</a></p>
+  </article>
+{% endblock %}

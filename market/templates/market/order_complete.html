@@ -1,0 +1,28 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+  <section class="order-complete-page">
+    <div class="page-heading">
+      <h2>Buyurtma qabul qilindi</h2>
+      <p>Rahmat, {{ order.customer_name }}! Buyurtmangiz qabul qilindi.</p>
+    </div>
+
+    <div class="order-summary">
+      <p><strong>Buyurtma raqami:</strong> #{{ order.id }}</p>
+      <p><strong>Umumiy summa:</strong> $ {{ order.total_price }}</p>\n
+      <p><strong>Manzil:</strong> {{ order.customer_address }}</p>
+    </div>
+
+    <div class="order-actions">
+      <a class="btn-primary" href="{% url 'market:home' %}">Bosh sahifaga qaytish</a>
+    </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        localStorage.removeItem('uzumMarketCart');
+        const count = document.getElementById('cartCount');
+        if (count) count.textContent = '0';
+      });
+    </script>
+  </section>
+{% endblock %}

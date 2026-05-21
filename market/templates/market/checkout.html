@@ -1,0 +1,74 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+  <section class="checkout-page">
+    <div class="page-heading">
+      <h2>Buyurtma berish</h2>
+      <p>Savatchangizdagi mahsulotlarni tasdiqlang va buyurtmangizni yuboring.</p>
+    </div>
+
+    {% if errors %}
+      <div class="form-errors">
+        <ul>
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <div class="checkout-grid">
+      <div class="checkout-details">
+        <form id="checkoutForm" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="cart_data" id="cartData" />
+
+          <label>
+            Ism va familiya
+            <input type="text" name="customer_name" value="{{ customer_name|default:'' }}" required />
+          </label>
+
+          <label>
+            Elektron pochta
+            <input type="email" name="customer_email" value="{{ customer_email|default:'' }}" required />
+          </label>
+
+          <label>
+            Yetkazib berish manzili
+            <textarea name="customer_address" rows="4" required>{{ customer_address|default:'' }}</textarea>
+          </label>
+
+          <button class="btn-primary" type="submit">Buyurtma yuborish</button>
+        </form>
+      </div>
+
+      <div class="checkout-review">
+        <div class="cart-panel checkout-panel">
+          <div class="cart-empty" id="checkoutEmpty">
+            <p>Savatchada hech qanday mahsulot yo‘q.</p>
+            <a class="btn-secondary" href="{% url 'market:home' %}">Mahsulot tanlash</a>
+          </div>
+
+          <table class="cart-table" id="checkoutTable">
+            <thead>
+              <tr>
+                <th>Mahsulot</th>
+                <th>Narx</th>
+                <th>Miqdor</th>
+                <th>Jami</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <div class="cart-summary">
+            <div>
+              <p>Umumiy summa</p>
+              <strong id="checkoutTotal">0 $</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

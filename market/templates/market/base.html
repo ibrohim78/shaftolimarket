@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shoptoli Market - Online Shop</title>
+    <link rel="stylesheet" href="{% static 'market/css/style.css' %}" />
+    <script defer src="{% static 'market/js/main.js' %}"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <div>
+            <a class="brand" href="{% url 'market:home' %}">🍑 Shoptoli Market</a>
+            <p class="brand-tag">Shaftoli logosi bilan zamonaviy onlayn bozor</p>
+          </div>
+          <nav class="site-nav">
+            <a href="{% url 'market:home' %}">Bosh sahifa</a>
+            <a href="{% url 'market:about' %}">Biz haqimizda</a>
+            <a href="{% url 'market:cart' %}">Savatcha <span id="cartCount">0</span></a>
+            <a href="/admin/">Admin</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="container">
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <p>© 2026 Shoptoli Market - Django Online Shop</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

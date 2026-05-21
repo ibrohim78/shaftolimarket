@@ -1,0 +1,40 @@
+{% extends 'market/base.html' %}
+
+{% block content %}
+  <section class="cart-page">
+    <div class="page-heading">
+      <h2>Savatcha</h2>
+      <p>Bu yerda siz qo‘shgan barcha mahsulotlar ko‘rinadi.</p>
+    </div>
+
+    <div class="cart-panel">
+      <div class="cart-empty" id="cartEmpty">
+        <p>Hozircha savatchada mahsulot yo‘q.</p>
+        <a class="btn-secondary" href="{% url 'market:home' %}">Mahsulot tanlash</a>
+      </div>
+
+      <table class="cart-table" id="cartTable">
+        <thead>
+          <tr>
+            <th>Mahsulot</th>
+            <th>Narx</th>
+            <th>Miqdor</th>
+            <th>Jami</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="cart-summary cart-summary-actions">
+        <div>
+          <p>Umumiy summa</p>
+          <strong id="cartTotal">0 $</strong>
+        </div>
+        <div class="cart-buttons">
+          <a class="btn-primary" href="{% url 'market:checkout' %}">Buyurtma berish</a>
+          <button class="btn-secondary" id="clearCart" type="button">Savatchani tozalash</button>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
