@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-uzummarket-online-shop-demo')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', 'shaftolimarket.pythonanywhere.com,www.shaftolimarket.pythonanywhere.com,127.0.0.1,localhost').split(',')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
