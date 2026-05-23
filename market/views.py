@@ -65,11 +65,11 @@ def checkout(request):
         
         errors = []
         if not customer_name:
-            errors.append('Ismingizni kiriting.')
+            errors.append("Ismingizni kiriting.")
         if not customer_email:
-            errors.append('Elektron pochta manzilingizni kiriting.')
+            errors.append("Elektron pochta manzilingizni kiriting.")
         if not customer_address:
-            errors.append('Manzilingizni kiriting.')
+            errors.append("Manzilingizni kiriting.")
 
         try:
             cart_items = json.loads(cart_data or '[]')
@@ -77,7 +77,7 @@ def checkout(request):
             cart_items = []
 
         if not cart_items:
-            errors.append('Savatchada hech qanday mahsulot yo‘q.')
+            errors.append("Savatchada hech qanday mahsulot yo'q.")
 
         if errors:
             return render(request, 'market/checkout.html', {
@@ -108,7 +108,7 @@ def checkout(request):
         
         send_telegram_message(order)
         
-        return redirect(reverse('market:order_complete', args=[order.id]))
+        return redirect('shop:test_payment', order_id=order.id)
 
     return render(request, 'market/checkout.html')
 

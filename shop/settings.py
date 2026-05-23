@@ -4,7 +4,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-uzummarket-online-shop-demo'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shaftolimarket.pythonanywhere.com', 'www.shaftolimarket.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,6 +78,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Telegram Bot Settings
-TELEGRAM_BOT_TOKEN = '8746488371:AAFs8JyFHlT7YWthhJoGyuunjjIbiyF_LJM'
-TELEGRAM_CHANNEL_ID = '-1002929777455'
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
+
+# Stripe Settings
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
